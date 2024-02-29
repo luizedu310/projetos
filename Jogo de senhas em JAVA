@@ -1,0 +1,69 @@
+//Bibliotecas
+import java.util.Scanner;
+import java.util.HashSet;
+//Criando a classe
+public class JogoDaSenha{
+//Definição das variaveis
+private int quant;
+private int[] lista;
+private int[] aleatorio;
+private HashSet<Integer> Acertados;
+public JogoDaSenha(int quant){
+this.quant = quant;
+this.lista = new int[quant];
+this.aleatorio = new int[30];
+this.Acertados = new HashSet<>();
+}
+//Metodo random
+public void Random(){
+for(int i = 0; i < 30; i++){
+//Variável para armazenar os numeros
+int NumRd;
+//Booleano para verificar se o valor vai se repetir na lista
+boolean NaLista = false;
+do{
+NumRd = (int) (Math.random() * 100) + 1;
+if(!Acertados.contains(NumRd)){
+Acertados.add(NumRd);
+break;
+}
+}
+while(NaLista);
+aleatorio[i] = NumRd;
+System.out.print(NumRd +" " );
+}
+}
+public void FazerTentativa(){
+Scanner fazTentativa = new Scanner(System.in);
+System.out.println("Jogo de Senha");
+int Tentativas = 0;
+while(true){System.out.println("Digite 5 numeros de 1 a 100:");
+int acertou = 0;
+HashSet<Integer> advinhado = new HashSet<>();
+for(int i = 0; i < quant; i++){
+lista[i] = fazTentativa.nextInt();
+if(Acertados.contains(lista[i]) && !advinhado.contains(lista[i])){
+acertou++;
+advinhado.add(lista[i]);
+}
+}
+if(acertou == quant){
+System.out.println("Você acertou os 5 numéros!!!!");
+break;
+}
+else if(acertou!= 0 && acertou<quant){
+System.out.println("Você acertou "+ acertou + " numéros");
+}
+else{
+System.out.println("Você errou");
+Tentativas++;
+System.out.println("Tentativa "+ Tentativas);
+}
+}
+}
+public static void main(String[] args){
+JogoDaSenha sen1 = new JogoDaSenha(5);
+sen1.Random();
+sen1.FazerTentativa();
+}
+}
