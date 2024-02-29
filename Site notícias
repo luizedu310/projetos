@@ -1,0 +1,35 @@
+import React from 'react';
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+
+// Importando os componentes para as diferentes páginas
+import Home from './pages/Home';
+import Noticias from './pages/Noticias';
+import Sobre from './pages/Sobre';
+import Contato from './pages/Contato';
+
+// Componente principal
+const App = () => {
+  return (
+    <Router>
+      <div>
+        {/* Configurando as rotas usando Switch e Route */}
+        <Switch>
+          <Route path="/" exact>
+            <Home />
+          </Route>
+          <Route path="/noticias">
+            <Noticias />
+          </Route>
+          <Route path="/sobre">
+            <Sobre />
+          </Route>
+          <Route path="/contato">
+            <Contato />
+          </Route>
+        </Switch>
+      </div>
+    </Router>
+  );
+};
+
+export default App; 
