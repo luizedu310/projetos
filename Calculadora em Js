@@ -1,0 +1,26 @@
+var X = prompt('Digite o primeiro número');
+var XIS = parseInt(X);
+var Y = prompt('Digite o segundo número');
+var YIP = parseInt(Y);
+var OP = prompt("Escolha uma operação: soma-1, subtração-2,
+multiplicação-3, divisão-4");
+switch (parseInt(OP)) {
+case 1:
+console.log("resultado: " + (XIS + YIP));
+break;
+case 2:
+console.log("resultado: " + (XIS - YIP));
+break;
+case 3:
+console.log("resultado: " + (XIS * YIP));
+break;
+case 4:
+if (YIP !== 0) {
+console.log("resultado: " + (XIS / YIP));
+} else {
+console.log("Erro: divisão por zero não é permitida.");
+}
+break;
+default:
+console.log("Comando inválido");
+}
